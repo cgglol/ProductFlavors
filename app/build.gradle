@@ -1,0 +1,79 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "29.0.3"
+    flavorDimensions "default"
+    defaultConfig {
+        applicationId "com.cgg.productflavors"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //  applicationId 一个手机安装多个版本   studio左下角 Build Variants 可以选择当前编译，打包版本
+     productFlavors{
+        CGG1{
+            applicationId "com.cgg.productflavors_1"
+            resValue "string","app_name","CGG1"
+        }
+        CGG2{
+            applicationId "com.cgg.productflavors_2"
+            resValue "string","app_name","CGG2"
+        }
+        CGG3{
+            applicationId "com.cgg.productflavors_3"
+            resValue "string","app_name","CGG3"
+        }
+        CGG4{
+            applicationId "com.cgg.productflavors_4"
+            resValue "string","app_name","CGG4"
+        }
+        CGG5{
+            applicationId "com.cgg.productflavors_5"
+            resValue "string","app_name","CGG5"
+        }
+    }
+
+    //manifestPlaceholders 打渠道包  studio左下角 Build Variants 可以选择当前编译，打包版本
+    //  以 友盟+ 的渠道为例  不会的可以参考：https://www.jianshu.com/p/e4da2f477cd8
+/*    productFlavors{
+        huawei{
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "com.cgg.productflavors_huawei"]
+            resValue "string","app_name","CGG"
+        }
+        xiaomi{
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "com.cgg.productflavors_xiaomi"]
+            resValue "string","app_name","CGG"
+        }
+        vivo{
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "com.cgg.productflavors_vivo"]
+            resValue "string","app_name","CGG"
+        }
+        oppo{
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "com.cgg.productflavors_oppo"]
+            resValue "string","app_name","CGG"
+        }
+        yingyongbao{
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "com.cgg.productflavors_yingyongbao"]
+            resValue "string","app_name","CGG"
+        }
+    }*/
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
